@@ -1,0 +1,11 @@
+{
+  "name":"VORTEX STUDY — منصة ذكية لتنظيم ومتابعة الطلاب",
+  "short_name":"VORTEX STUDY",
+  "start_url":"./index.html",
+  "display":"standalone",
+  "dir":"rtl",
+  "lang":"ar",
+  "theme_color":"#0b1220",
+  "background_color":"#07111c",
+  "icons":[{"src":"./vortex-study-logo.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}]
+}
