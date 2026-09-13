@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">VORTEX STUDY</title><desc id="desc">شعار VORTEX STUDY</desc>
+  <defs>
+    <linearGradient id="g" x1="65" y1="450" x2="452" y2="55" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#19d9ff"/><stop offset=".46" stop-color="#6c5cff"/><stop offset="1" stop-color="#db5cff"/>
+    </linearGradient>
+    <radialGradient id="bg" cx="50%" cy="35%" r="75%">
+      <stop stop-color="#18345b"/><stop offset=".55" stop-color="#0b1529"/><stop offset="1" stop-color="#040812"/>
+    </radialGradient>
+    <filter id="glow" x="-80%" y="-80%" width="260%" height="260%"><feGaussianBlur stdDeviation="10" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <filter id="soft" x="-80%" y="-80%" width="260%" height="260%"><feGaussianBlur stdDeviation="22"/></filter>
+  </defs>
+  <rect width="512" height="512" rx="122" fill="url(#bg)"/>
+  <circle cx="256" cy="218" r="154" fill="none" stroke="#3b8dff" stroke-opacity=".10" stroke-width="2"/>
+  <circle cx="256" cy="218" r="118" fill="none" stroke="#a45cff" stroke-opacity=".08" stroke-width="2"/>
+  <ellipse cx="258" cy="290" rx="184" ry="50" fill="#2a83ff" opacity=".10" filter="url(#soft)"/>
+  <path d="M122 313 199 105l57 140 61-140 74 208-75-50-60 130-58-130z" fill="url(#g)" filter="url(#glow)"/>
+  <path d="M92 301c49 76 151 105 239 56 63-35 88-96 65-156" fill="none" stroke="url(#g)" stroke-width="28" stroke-linecap="round" filter="url(#glow)"/>
+  <path d="M116 226c43-64 122-92 197-66 57 20 98 64 99 119" fill="none" stroke="#60e7ff" stroke-width="9" stroke-linecap="round" opacity=".9"/>
+  <path d="M255 92v23M420 217h-25M93 217h24" stroke="#6fe9ff" stroke-width="5" stroke-linecap="round" opacity=".55"/>
+  <circle cx="130" cy="348" r="7" fill="#6deeff"/><circle cx="399" cy="128" r="5" fill="#b76aff"/>
+</svg>
