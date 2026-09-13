@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="preconnect" href="https://www.gstatic.com" crossorigin>
+<meta name="theme-color" content="#f5f8fb">
+<title>VORTEX STUDY — إنشاء حساب</title>
+<style>
+:root{--bg:#f5f8fb;--card:rgba(255,255,255,.98);--text:#152330;--muted:#6a7b89;--border:#dce5ed;--accent:#6b4cff;--accent2:#4e9cff;--green:#168a5b;--red:#b42318}
+*{box-sizing:border-box}body{margin:0;min-height:100vh;font-family:Tahoma,Arial,sans-serif;color:var(--text);background:radial-gradient(600px 350px at 15% 10%,rgba(107,76,255,.10),transparent 70%),radial-gradient(600px 350px at 85% 85%,rgba(78,156,255,.10),transparent 70%),linear-gradient(135deg,#f7faff,#eef4f8);display:grid;place-items:center;overflow:hidden}
+.bg{position:fixed;inset:0;pointer-events:none;overflow:hidden}.bg i{position:absolute;width:240px;height:240px;border-radius:50%;border:1px solid rgba(255,255,255,.07);animation:float 12s ease-in-out infinite}.bg i:nth-child(1){top:8%;left:7%}.bg i:nth-child(2){right:-60px;bottom:10%;width:360px;height:360px;animation-delay:-4s}.bg i:nth-child(3){left:35%;bottom:-160px;width:300px;height:300px;animation-delay:-7s}
+.wrap{position:relative;z-index:1;width:min(500px,calc(100% - 30px));padding:32px;border:1px solid rgba(255,255,255,.15);border-radius:30px;background:var(--card);box-shadow:0 35px 100px rgba(0,0,0,.35);animation:pop .5s cubic-bezier(.2,.8,.2,1)}
+.brand{display:flex;align-items:center;gap:10px;margin-bottom:22px}.brand-mark{width:50px;height:50px;border-radius:15px;background:url("./vortex-study-icon-192.png") center/cover no-repeat;display:grid;place-items:center;box-shadow:0 12px 30px rgba(107,76,255,.20)}.brand strong{font-size:23px}.brand small{display:block;color:var(--muted);font-size:10px;letter-spacing:1.6px;margin-top:2px}
+h1{font-size:28px;margin:0 0 8px}.lead{margin:0 0 20px;color:var(--muted);line-height:1.8;font-size:13px}.field{margin:12px 0}.field label{display:block;font-size:13px;color:var(--muted);margin-bottom:6px}.field input{width:100%;padding:13px 14px;border-radius:14px;border:1px solid var(--border);background:#fff;font:inherit;outline:none;transition:border-color .2s,box-shadow .2s,transform .2s}.field input:focus{border-color:#9b8cff;box-shadow:0 0 0 4px rgba(107,76,255,.10);transform:translateY(-1px)}
+.rules{display:flex;gap:8px;align-items:flex-start;margin:12px 0;color:var(--muted);font-size:11px;line-height:1.8}.rules input{margin-top:4px;accent-color:var(--accent)}button{width:100%;border:0;border-radius:14px;padding:13px 14px;font:inherit;font-weight:900;cursor:pointer;transition:.22s;position:relative;overflow:hidden}.primary{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;box-shadow:0 12px 28px rgba(82,77,220,.25)}.primary:hover{transform:translateY(-2px);box-shadow:0 16px 34px rgba(82,77,220,.30)}button:active{transform:scale(.985)}button:disabled{opacity:.6;cursor:not-allowed;transform:none}.secondary{margin-top:9px;background:#f4f7fb;color:var(--text);border:1px solid var(--border)}.msg{min-height:25px;margin-top:12px;font-size:12px;line-height:1.7}.msg.error{color:var(--red)}.msg.ok{color:var(--green)}.login-link{text-align:center;margin-top:15px;color:var(--muted);font-size:12px}.login-link a{color:#5842c5;text-decoration:none;font-weight:900}.strength{height:7px;border-radius:99px;background:#e9edf3;overflow:hidden;margin-top:7px}.strength i{display:block;height:100%;width:0;border-radius:99px;background:linear-gradient(90deg,#d95d65,#e5ae45,#168a5b);transition:width .35s ease}.strength-text{font-size:10px;color:var(--muted);margin-top:5px}
+@keyframes pop{from{opacity:0;transform:translateY(12px) scale(.98)}to{opacity:1;transform:none}}@keyframes float{50%{transform:translateY(-22px) rotate(8deg)}}@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+ .register-dev{margin-top:5px;font-size:9px;letter-spacing:1.5px;color:#8a6c2b;font-weight:900}</style>
+<script src="./firebase-config.js"></script><script>
+const VORTEX_DATA_COLLECTION="vortex_study_users_reset_2026"; const VORTEX_RESET_AT=1788739200000; try{if(localStorage.getItem("vortex-study-reset-2026")!=="1"){Object.keys(localStorage).forEach(k=>{if(k.startsWith("moelite_")||k.startsWith("vortex-")||k.startsWith("vortex_")||k==="moelite-state")localStorage.removeItem(k);});sessionStorage.clear();localStorage.setItem("vortex-study-reset-2026","1");}}catch{}
+</script>
+<script src="https://www.gstatic.com/firebasejs/12.18.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/12.18.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore-compat.js"></script>
+<link rel="manifest" href="./manifest.webmanifest"><link rel="icon" type="image/png" sizes="512x512" href="./vortex-study-icon-512.png"><link rel="shortcut icon" type="image/png" href="./vortex-study-icon-192.png"><link rel="apple-touch-icon" sizes="180x180" href="./vortex-study-icon-180.png">
+<style id="vortex-luxe-register">
+:root{--accent:#b78618;--accent2:#e0b94f;--gold:#c99a2e;--bg:#f5f2ec;--card:#fffdf8;--text:#1c1a17;--muted:#746d62;--border:#ded5c6}
+body{background:radial-gradient(700px 380px at 12% 0%,rgba(201,154,46,.12),transparent 65%),radial-gradient(620px 360px at 90% 90%,rgba(35,30,20,.05),transparent 68%),linear-gradient(135deg,#faf7f0,#f1ece2);color:var(--text)}
+.wrap{background:rgba(255,253,248,.97);border-color:#ded5c6;box-shadow:0 28px 90px rgba(44,34,18,.16)}
+.brand-mark{box-shadow:0 12px 30px rgba(183,134,24,.20);border:1px solid rgba(201,154,46,.35)}
+h1{color:#1b1813}.primary{background:linear-gradient(135deg,#b78618,#e0b94f);color:#19150d;box-shadow:0 12px 28px rgba(183,134,24,.24)}.secondary{background:#f7f1e5;color:#1c1a17;border-color:#ded5c6}.field input{background:#fffdf8;color:#1c1a17;border-color:#ded5c6}.field input:focus{border-color:#c99a2e;box-shadow:0 0 0 4px rgba(201,154,46,.11)}.login-link a{color:#8a6513}.rules input{accent-color:#b78618}.strength i{background:linear-gradient(90deg,#b36e2f,#c99a2e,#3c885f)}
+</style>
+<style id="vortex-v8-register-brand">
+:root{--bg:#f7f4ed;--card:#fffdf8;--text:#1c1812;--muted:#756c60;--border:#dfd5c3;--accent:#b78618;--accent2:#e0b94f}
+body{background:radial-gradient(800px 440px at 8% 0%,rgba(201,154,46,.13),transparent 63%),radial-gradient(720px 420px at 92% 90%,rgba(255,255,255,.85),transparent 62%),linear-gradient(135deg,#faf8f3,#f1ece3)!important;color:var(--text)!important}
+.wrap{background:rgba(255,253,248,.97)!important;border-color:#dfd5c3!important;box-shadow:0 30px 95px rgba(55,42,20,.16)!important}
+.brand-mark{background:url('./vortex-study-icon-192.png') center/cover no-repeat!important;box-shadow:0 12px 32px rgba(183,134,24,.20)!important;border-color:rgba(201,154,46,.36)!important}
+.brand small{color:#8a7b64!important}.lead{color:#756c60!important}.field label{color:#756c60!important}.field input{background:#fffdf8!important;color:#1c1812!important;border-color:#d9cfbd!important}.field input:focus{border-color:#c99a2e!important;box-shadow:0 0 0 4px rgba(201,154,46,.11)!important}.primary{background:linear-gradient(135deg,#a9750c,#c99a2e,#e1bf63)!important;color:#1a150d!important;box-shadow:0 12px 28px rgba(183,134,24,.22)!important}.secondary{background:#f8f1e5!important;color:#30291f!important;border-color:#ddd1bd!important}.login-link a{color:#8b6612!important}.rules input{accent-color:#b78618!important}
+</style>
+
+<style id="vortex-performance-8k">
+/* Performance + ultra-crisp rendering pass */
+html{scroll-behavior:auto!important;text-rendering:geometricPrecision;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+body{contain:layout style paint;overscroll-behavior-x:none}
+button,a,input,select,textarea{touch-action:manipulation}
+.card,.modal-box,.vortex-tour-card,.vortex-tour-focus,.vortex-fab,.account-menu-panel{backface-visibility:hidden;-webkit-backface-visibility:hidden;transform:translateZ(0)}
+.card,.vortex-tour-card,.modal-box{contain:layout paint}
+.progress i,.mini-progress i,.bar i,.pro-progress-line i,.pro-subject-bar i{will-change:width}
+button,.primary,.secondary,.danger,.ghost,.choice,.level,.opt,.nav button,.day{will-change:auto}
+img,svg,canvas{shape-rendering:geometricPrecision;image-rendering:auto}
+canvas{display:block;max-width:100%}
+@media (hover:hover){.card:hover{transform:translate3d(0,-2px,0)}.primary:hover{transform:translate3d(0,-2px,0)}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto!important}.card,.modal-box,.vortex-tour-card{transform:none!important}}
+</style>
+
+
+<style id="vortex-compact-clean-final">
+/* Compact UI: smaller, cleaner, responsive, no functional changes */
+:root{--radius:12px}
+body{font-size:14px}
+.app{grid-template-columns:230px minmax(0,1fr)}
+.sidebar{padding:12px 12px}
+.brand{font-size:20px;margin:2px 4px 12px}
+.mini-goal{padding:11px;border-radius:12px;margin-bottom:10px}
+.nav button{padding:8px 10px;margin:2px 0;border-radius:9px}
+.main{max-width:1440px;padding:14px}
+.top{gap:9px;margin-bottom:10px}.top h1{font-size:24px}.top p{margin:4px 0;font-size:13px}
+.grid{gap:9px}.card{padding:12px;border-radius:12px;box-shadow:0 7px 20px rgba(31,55,75,.07)}
+.card:hover{transform:none;box-shadow:0 10px 24px rgba(31,55,75,.09)}
+.kpi .num{font-size:26px;margin-top:6px}
+.section-title{gap:6px;margin-bottom:8px}.section-title h2{font-size:16px}
+.actions,.row{gap:6px}.primary,.secondary,.danger,.ghost{padding:8px 11px;border-radius:9px;transition:transform .14s ease,background .14s ease,box-shadow .14s ease,border-color .14s ease}
+.primary{box-shadow:0 5px 13px rgba(183,134,24,.16)}.primary:hover{transform:none;box-shadow:0 7px 16px rgba(183,134,24,.19)}
+.progress{height:8px}.subject{grid-template-columns:118px minmax(0,1fr) 48px;gap:8px;margin:9px 0}
+.task{gap:8px;padding:9px 0}.tag{font-size:10px;padding:4px 7px}
+.week{gap:5px}.day{padding:8px 4px;border-radius:9px}.day strong{font-size:11px}
+.field{margin:8px 0}.field input,.field select,.field textarea{padding:9px 10px;border-radius:9px}
+.field textarea{min-height:90px}.choice-grid{gap:6px}.choice,.level{padding:9px;border-radius:9px}
+.modal{padding:10px}.modal-box{width:min(780px,100%);padding:16px;border-radius:16px;box-shadow:0 20px 50px rgba(0,0,0,.18)}
+.choice-row{gap:6px}.question{padding:12px;border-radius:11px;margin:8px 0}.opt{padding:9px;border-radius:9px;margin:5px 0}
+.score{font-size:38px;margin:7px}.timer{font-size:54px;margin:10px}.statline{font-size:12px;margin:6px 0}.bar{height:7px}
+.toast{bottom:12px;left:12px;padding:9px 11px;border-radius:10px}
+.vortex-fab{width:48px;height:48px;left:14px;bottom:14px;border-radius:14px}
+.vortex-command{padding:6vh 10px 10px}.vortex-command-box{border-radius:16px}
+.smart-health-grid{gap:7px}.smart-health-card{padding:9px;border-radius:12px}
+.catalog-grid{gap:7px}.catalog-card{padding:10px;border-radius:11px}.pro-grid{gap:7px}.pro-panel,.pro-subject-card{padding:10px}
+/* Lighter motion: transform-only, short duration */
+.screen.active{animation:screenIn .16s ease both}.card{animation:rise .16s ease both}.task{animation:fade .1s ease}.modal.show{animation:fade .1s ease}.modal-box{animation:pop .12s ease}
+@media(max-width:1050px){.app{grid-template-columns:1fr}.sidebar{padding:7px 8px}.main{padding:10px}}
+@media(max-width:700px){.main{padding:6px}.top h1{font-size:20px}.card{padding:9px}.kpi .num{font-size:23px}.subject{grid-template-columns:85px minmax(0,1fr) 44px}.timer{font-size:46px}.modal-box{padding:12px;border-radius:13px}}
+</style>
+</head>
+<body>
+<div class="bg"><i></i><i></i><i></i></div>
+<main class="wrap">
+  <div class="brand"><div class="brand-mark" aria-label="VORTEX STUDY"></div><div><strong>VORTEX STUDY</strong><small>مساحتك الذكية للمذاكرة والقياس والتقدم</small><div class="register-dev">VORTEX weblab</div></div></div>
+  <h1>إنشاء حسابك</h1>
+  <p class="lead">أنشئ حسابك مرة واحدة، وسيبقى تقدمك وخطتك ونتائجك محفوظة معك.</p>
+  <div class="field"><label for="email">البريد الإلكتروني</label><input id="email" type="email" autocomplete="email" placeholder="name@example.com"></div>
+  <div class="field"><label for="password">كلمة المرور</label><input id="password" type="password" autocomplete="new-password" placeholder="6 أحرف أو أكثر"><div class="strength"><i id="strengthBar"></i></div><div class="strength-text" id="strengthText">اكتب كلمة مرور من 6 أحرف على الأقل.</div></div>
+  <div class="field"><label for="confirm">تأكيد كلمة المرور</label><input id="confirm" type="password" autocomplete="new-password" placeholder="أعد كتابة كلمة المرور"></div>
+  <label class="rules"><input id="agree" type="checkbox"><span>أوافق على حفظ بياناتي الدراسية ومزامنتها تلقائيًا مع حسابي.</span></label>
+  <button id="registerBtn" class="primary" type="button">إنشاء الحساب والدخول</button>
+  <button id="backBtn" class="secondary" type="button">العودة لتسجيل الدخول</button>
+  <div id="msg" class="msg"></div>
+  <div class="login-link">بعد إنشاء الحساب سيتم نقلك تلقائيًا إلى البرنامج.</div>
+</main>
+<script>
+(function(){
+  const msg=document.getElementById('msg'),email=document.getElementById('email'),pass=document.getElementById('password'),confirmEl=document.getElementById('confirm'),agree=document.getElementById('agree'),btn=document.getElementById('registerBtn'),bar=document.getElementById('strengthBar'),text=document.getElementById('strengthText');
+  function setMsg(t,k){msg.textContent=t;msg.className='msg '+(k||'')}
+  function friendly(e){const c=e?.code||'';if(c==='auth/email-already-in-use')return 'الحساب موجود بالفعل، استخدم تسجيل الدخول.';if(c==='auth/weak-password')return 'كلمة المرور لازم تكون 6 أحرف أو أكثر.';if(c==='auth/invalid-email')return 'اكتب بريدًا إلكترونيًا صحيحًا.';if(c==='auth/network-request-failed')return 'تعذر الاتصال بالإنترنت.';return 'تعذر إنشاء الحساب الآن. راجع الاتصال بالإنترنت وحاول مرة أخرى.'}
+  function strength(v){let n=0;if(v.length>=6)n+=35;if(v.length>=10)n+=25;if(/[A-Z]/.test(v))n+=10;if(/[a-z]/.test(v))n+=10;if(/\d/.test(v))n+=10;if(/[^A-Za-z\d]/.test(v))n+=10;return Math.min(100,n)}
+  pass.addEventListener('input',()=>{const n=strength(pass.value);bar.style.width=n+'%';text.textContent=n<35?'ضعيفة':n<60?'مقبولة':n<80?'جيدة':'قوية';});
+  document.getElementById('backBtn').onclick=()=>location.href='index.html';
+  document.getElementById('registerBtn').onclick=async()=>{
+    const em=email.value.trim().toLowerCase(),pw=pass.value,cf=confirmEl.value;
+    if(!em||!pw||!cf)return setMsg('املأ كل الحقول أولًا.','error');
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em))return setMsg('اكتب بريدًا إلكترونيًا صحيحًا.','error');
+    if(pw.length<6)return setMsg('كلمة المرور لازم تكون 6 أحرف أو أكثر.','error');
+    if(pw!==cf)return setMsg('كلمتا المرور غير متطابقتين.','error');
+    if(!agree.checked)return setMsg('وافق على حفظ ومزامنة بيانات الحساب أولًا.','error');
+    if(!window.firebase||!window.MOELITE_FIREBASE_CONFIG)return setMsg('تعذر تشغيل الحساب الآن. افتح الصفحة من الموقع مباشرة وحاول مرة أخرى.','error');
+    btn.disabled=true;setMsg('جاري إنشاء الحساب…');
+    try{
+      if(!firebase.apps.length)firebase.initializeApp(window.MOELITE_FIREBASE_CONFIG);
+      const auth=firebase.auth(),db=firebase.firestore();
+      try{await auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL)}catch(e){console.warn('auth persistence setup failed',e)}
+      const cred=await auth.createUserWithEmailAndPassword(em,pw),u=cred.user;
+      try{await u.updateProfile({displayName:em.split('@')[0]})}catch{}
+      try{await db.doc(VORTEX_DATA_COLLECTION+'/'+u.uid).set({email:u.email,displayName:u.displayName||em.split('@')[0],providerIds:['password'],status:'active',createdAt:firebase.firestore.FieldValue.serverTimestamp(),lastSeenAt:firebase.firestore.FieldValue.serverTimestamp()},{merge:true})}catch(err){console.warn('account doc setup failed',err)}
+      setMsg('تم إنشاء الحساب بنجاح. جاري نقلك للبرنامج…','ok');setTimeout(()=>location.href='index.html',450);
+    }catch(e){console.error(e);setMsg(friendly(e),'error');btn.disabled=false}
+  };
+})();
+</script>
+<script src="liquid-ripple.js" defer></script>
+</body>
+</html>
