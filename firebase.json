@@ -1,0 +1,20 @@
+{
+  "functions": {
+    "source": "functions",
+    "runtime": "nodejs20",
+    "region": "us-central1"
+  },
+  "firestore": {
+    "rules": "firestore.rules"
+  },
+  "hosting": {
+    "public": ".",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**",
+      "functions/**"
+    ],
+    "cleanUrls": true
+  }
+}
