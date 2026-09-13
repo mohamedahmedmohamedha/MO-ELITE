@@ -1,0 +1,43 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() { return request.auth != null; }
+    function isAdmin() {
+      return signedIn()
+        && request.auth.token.email == 'mohamedhamed_2022@icloud.com'
+        && request.auth.token.email_verified == true
+;
+    }
+
+    match /vortex_study_users_reset_2026/{uid} {
+      allow read: if signedIn() && (request.auth.uid == uid || isAdmin());
+
+      // A normal user may create only their own non-admin profile.
+      allow create: if signedIn() && request.auth.uid == uid
+        && request.resource.data.get('isAdmin', false) != true;
+
+      // Admin can manage profiles. User can update their own profile but cannot
+      // promote itself, change status, or alter a pre-existing admin marker.
+      allow update: if isAdmin() || (
+        signedIn() && request.auth.uid == uid
+        && request.resource.data.get('isAdmin', false) == resource.data.get('isAdmin', false)
+        && request.resource.data.get('status', 'active') == resource.data.get('status', 'active')
+      );
+
+      allow delete: if isAdmin();
+
+      match /app/{docId} {
+        // During first-login/onboarding the profile document may not have arrived yet.
+        // The user can still write only inside their own UID; once a profile exists,
+        // a suspended profile blocks further app-state access.
+        allow read, write: if isAdmin() || (
+          signedIn()
+          && request.auth.uid == uid
+          && (!exists(/databases/$(database)/documents/vortex_study_users_reset_2026/$(uid))
+              || (get(/databases/$(database)/documents/vortex_study_users_reset_2026/$(uid)).data.get('status', 'active') != 'suspended'
+                  && get(/databases/$(database)/documents/vortex_study_users_reset_2026/$(uid)).data.get('disabled', false) != true))
+        );
+      }
+    }
+  }
+}
